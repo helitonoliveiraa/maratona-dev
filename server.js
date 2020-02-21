@@ -56,12 +56,10 @@ server.post('/', (req, res) => {
 
   const values = [name, email, blood];
 
-  console.log(values);
-
   db.query(query, values, (err) => {
-    // if (err) {
-    //   return res.json({ error: 'Erro no banco de dados' });
-    // }
+    if (err) {
+      return res.json({ error: 'Erro no banco de dados' });
+    }
 
     return res.redirect('/');
   });
