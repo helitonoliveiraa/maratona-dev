@@ -42,11 +42,9 @@ server.get('/', (req, res) => {
 });
 
 server.post('/', (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const blood = req.body.blood;
+  const { name, email, blood } = req.body;
 
-  if (name == '' || email == '' || blood == '') {
+  if (!name || !email || !blood) {
     return res.json({ error: 'Todos os campos são obrigatórios' });
   }
 
